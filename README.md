@@ -8,11 +8,11 @@ Project provided by Yasser.
 
 ### Version Links
 
-- [🌟 **Version 1**](https://yhlk.github.io/population-datavisu/v1/)  
-  Explore the first iteration of the project with interactive features and clean design.
+- [🌟 **Version 1**](https://yhlk.github.io/population-datavisu/v1/)
 
-- [🚀 **Version 2**](https://yhlk.github.io/population-datavisu/v2/)  
-  Discover the enhanced version with refined UI and additional features.
+- [🚀 **Version 2**](https://yhlk.github.io/population-datavisu/v2/)
+
+There's two versions, wanted to add a third with geojson to view population when hovering over the map. Thought it would be cool to be able to display more information about the countries when hovering over.
 
 ---
 
