@@ -6,6 +6,16 @@ Project provided by Yasser.
 
 ---
 
+### Version Links
+
+- [🌟 **Version 1**](https://yhlk.github.io/population-datavisu/v1/)  
+  Explore the first iteration of the project with interactive features and clean design.
+
+- [🚀 **Version 2**](https://yhlk.github.io/population-datavisu/v2/)  
+  Discover the enhanced version with refined UI and additional features.
+
+---
+
 ## 🚀 Project Overview
 
 The goal of this project is to create an interactive web application that allows users to:
