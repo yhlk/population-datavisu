@@ -1,4 +1,4 @@
-# 🌍 Population Web Systems 🌍
+# 🌍 Population Exercise 🌍
 
 ### Front-end Exercise
 
