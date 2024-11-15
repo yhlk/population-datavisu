@@ -16,6 +16,7 @@ export default {
       echartInstance: null,
     };
   },
+  //checking
   computed: {
     countryName() {
       const country = this.countries.find((c) => c.id === this.selectedCountry);
