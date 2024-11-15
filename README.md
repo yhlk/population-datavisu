@@ -48,8 +48,7 @@ The goal of this project is to create an interactive web application that allows
 
 ### Clone the Repository
 
-```bash
-git clone https://github.com/yhlk/population-exercise.git
+git clone https://github.com/yhlk/population-datavisu.git
 cd population-exercise
 
 Install Dependencies
@@ -63,4 +62,7 @@ npm run serve
 🌟 About the Project
 
 This project aims to provide an engaging way to explore population data interactively. Users can select countries, view population trends via charts, and navigate a world map for additional insights.
+
+```
+
 ```

@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+#app {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f8f9fa;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 3.2em;
+  font-weight: 700;
+  color: #4facfe;
+  margin-bottom: 0;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0px 3px 10px rgba(79, 172, 254, 0.8);
+}
+
+.control-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.control-panel > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+select {
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #4facfe;
+  background: #ffffff;
+  color: #333;
+  width: 180px;
+  box-shadow: 0px 5px 15px rgba(79, 172, 254, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:hover,
+select:focus {
+  transform: scale(1.05);
+  border-color: #00f2fe;
+  box-shadow: 0px 8px 20px rgba(0, 242, 254, 0.6);
+}
+
+label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #f8f9fa;
+  margin-bottom: 8px;
+}
+
+.content-display {
+  padding: 20px;
+  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.content-display h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #4facfe;
+  margin-bottom: 20px;
+}
+
+.data-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.data-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  font-weight: 500;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.data-item:hover {
+  background: rgba(79, 172, 254, 0.2);
+  transform: scale(1.02);
+}
+
+.year {
+  font-weight: 600;
+  color: #f8f9fa;
+}
+
+.population {
+  color: #4facfe;
+  font-weight: 700;
+}
+
+.map-section,
+.graph-section {
+  padding: 20px;
+  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
+  margin-top: 1.5rem;
+}
+
+.map-section {
+  height: 600px; /* Increased height for better display */
+}
+
+#populationChart {
+  border-radius: 12px;
+  box-shadow: 0px 5px 15px rgba(79, 172, 254, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
