@@ -1,139 +1,154 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
 #app {
+  text-align: center;
   font-family: "Poppins", sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #f8f9fa;
-  border-radius: 15px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
   max-width: 900px;
-  margin: 2rem auto;
-  padding: 2rem;
+  margin: auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 .header {
-  text-align: center;
-  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }
 
 .title {
-  font-size: 3.2em;
-  font-weight: 700;
-  color: #4facfe;
-  margin-bottom: 0;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0px 3px 10px rgba(79, 172, 254, 0.8);
+  font-size: 2.5em;
+  font-weight: 600;
+  color: #007bff;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 
-.control-panel {
+.dropdowns {
   display: flex;
-  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-bottom: 2.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  flex-wrap: wrap;
 }
 
-.control-panel > div {
+.dropdown,
+.view-selection,
+.graph-type-selection {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+.dropdown label,
+.view-selection label,
+.graph-type-selection label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 5px;
+}
+
 select {
   padding: 12px;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 2px solid #4facfe;
-  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 200px;
+  font-size: 1em;
   color: #333;
-  width: 180px;
-  box-shadow: 0px 5px 15px rgba(79, 172, 254, 0.4);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-select:hover,
-select:focus {
-  transform: scale(1.05);
-  border-color: #00f2fe;
-  box-shadow: 0px 8px 20px rgba(0, 242, 254, 0.6);
+select:hover {
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  border-color: #007bff;
 }
 
-label {
-  font-weight: 600;
-  font-size: 1rem;
-  color: #f8f9fa;
-  margin-bottom: 8px;
-}
-
-.content-display {
-  padding: 20px;
-  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+.data-display {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
   border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
-}
-
-.content-display h3 {
-  text-align: center;
-  font-size: 1.5rem;
-  color: #4facfe;
-  margin-bottom: 20px;
-}
-
-.data-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  padding: 25px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  margin-top: 25px;
 }
 
 .data-item {
   display: flex;
   justify-content: space-between;
-  padding: 15px 10px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  margin-bottom: 10px;
-  color: #ffffff;
-  font-weight: 500;
-  transition: transform 0.2s ease, background 0.2s ease;
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.data-item:hover {
-  background: rgba(79, 172, 254, 0.2);
-  transform: scale(1.02);
+.data-item:last-child {
+  border-bottom: none;
 }
 
 .year {
   font-weight: 600;
-  color: #f8f9fa;
+  color: #333;
 }
 
 .population {
-  color: #4facfe;
-  font-weight: 700;
+  color: #007bff;
+  font-weight: 600;
 }
 
-.map-section,
-.graph-section {
-  padding: 20px;
-  background: linear-gradient(135deg, #1c1c1c, #2e2e2e);
+.map-container {
+  height: 500px;
   border-radius: 12px;
-  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.6);
-  margin-top: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+  animation: fadeInMap 1s ease-in-out;
+  margin-top: 20px;
 }
 
-.map-section {
-  height: 600px; /* Increased height for better display */
-}
-
-#populationChart {
+.graph-container {
+  height: 400px;
+  width: 100%;
+  margin-top: 25px;
   border-radius: 12px;
-  box-shadow: 0px 5px 15px rgba(79, 172, 254, 0.5);
-  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.graph-type-selection select {
+  padding: 10px;
+  width: 200px;
+  font-size: 1em;
+  border-radius: 8px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInMap {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { LMap, LTileLayer, LMarker, LPopup } from "vue3-leaflet";
 import "leaflet/dist/leaflet.css";
-import * as echarts from "echarts";
+import Chart from "chart.js/auto";
 import { nextTick } from "vue";
 
 export default {
@@ -11,12 +11,12 @@ export default {
       countries: [],
       selectedCountry: null,
       selectedView: "text",
+      selectedChartType: "line",
       populationData: [],
       mapCenter: [20, 0],
-      echartInstance: null,
+      chart: null,
     };
   },
-  //checking
   computed: {
     countryName() {
       const country = this.countries.find((c) => c.id === this.selectedCountry);
@@ -28,9 +28,6 @@ export default {
     chartDataValues() {
       return this.populationData.map((entry) => entry.value).reverse();
     },
-    filteredPopulationData() {
-      return this.populationData.filter((entry) => entry.value !== null);
-    },
   },
   watch: {
     selectedCountry(newCountry) {
@@ -40,15 +37,10 @@ export default {
       }
     },
     selectedView(newView) {
-      if (newView === "echart") {
-        nextTick(() => this.renderEChart());
+      if (newView === "graph") {
+        nextTick(() => this.renderChart());
       } else if (newView === "map") {
         this.updateMapCenter();
-      }
-    },
-    populationData() {
-      if (this.selectedView === "echart") {
-        this.renderEChart();
       }
     },
   },
@@ -86,7 +78,9 @@ export default {
       }
     },
     handleCountryChange() {
-      this.fetchPopulationData(); // Ensure population data is re-fetched
+      localStorage.setItem("selectedCountry", this.selectedCountry);
+      localStorage.setItem("selectedView", "text");
+      window.location.reload();
     },
     handleViewChange() {
       localStorage.setItem("selectedView", this.selectedView);
@@ -98,60 +92,43 @@ export default {
       }
       this.selectedView = "text";
     },
-    renderEChart() {
-      if (this.echartInstance) {
-        this.echartInstance.dispose();
+    renderChart() {
+      if (this.chart) {
+        this.chart.destroy();
       }
 
-      const chartDom = document.getElementById("populationChart");
-      this.echartInstance = echarts.init(chartDom);
-
-      const option = {
-        title: {
-          text: "Population Over Years",
-          left: "center",
-          textStyle: {
-            color: "#f8f9fa",
-            fontWeight: "bold",
-            fontSize: 18,
-          },
-        },
-        tooltip: {
-          trigger: "axis",
-          formatter: (params) => {
-            return `${params[0].name}: ${params[0].value.toLocaleString()}`;
-          },
-        },
-        xAxis: {
-          type: "category",
-          data: this.chartLabels,
-          axisLine: { lineStyle: { color: "#f8f9fa" } },
-          axisLabel: { color: "#f8f9fa" },
-        },
-        yAxis: {
-          type: "value",
-          axisLabel: {
-            formatter: "{value}",
-            color: "#f8f9fa",
-          },
-          axisLine: { lineStyle: { color: "#f8f9fa" } },
-        },
-        series: [
-          {
-            data: this.chartDataValues,
-            type: "line",
-            smooth: true,
-            itemStyle: {
-              color: "#4facfe",
+      const ctx = document.getElementById("populationChart").getContext("2d");
+      this.chart = new Chart(ctx, {
+        type: this.selectedChartType,
+        data: {
+          labels: this.chartLabels,
+          datasets: [
+            {
+              label: "Population",
+              data: this.chartDataValues,
+              borderColor: "#007bff",
+              borderWidth: 2,
+              backgroundColor: "rgba(0, 123, 255, 0.2)",
+              fill: this.selectedChartType !== "line",
             },
-            areaStyle: {
-              color: "rgba(79, 172, 254, 0.2)",
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  return `${
+                    context.dataset.label
+                  }: ${context.raw.toLocaleString()}`;
+                },
+              },
             },
           },
-        ],
-      };
-
-      this.echartInstance.setOption(option);
+        },
+      });
     },
   },
   mounted() {
